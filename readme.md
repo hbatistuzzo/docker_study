@@ -21,3 +21,48 @@ __*but how?*__
 
 ---
 
+## Docker Commands
+
+*docker run*
+* start a container from an image. Creates an instance of whatever application is needed. If the image is not present in the host, it will pull from the docker hub (this only happens a single time, however).
+
+*docker ps*
+* list all running containers and info: the name of the image we've used to run the containers, the current status and the newly created id and name of the container (the funky ones such as sad_tamagoya).
+* ps -a outputs everything (running or not)
+
+*docker stop sad_tamagoya*
+* to stop we need either the id or the name, as above
+
+*docker rm sad_tamagoya*
+* this will remove the container, so it doesn't consume resources
+
+*docker images*
+* list of available images and their sizes
+
+*docker rmi ubuntu*
+* this will remove the image. No containers must be running from that image before trying to remove an image
+
+*docker pull command*
+* will only download the image, but not run it automatically (as doecker run does)
+
+<br>
+
+---
+
+> [!TIP]
+> Bear in mind the container only lives for as long as the process inside it is alive. Just using docker run whatever might download the image if it's not already there, but it immediately shifts the status to "exited".
+
+---
+
+*docker exec _sad_tamagoya_ cat /etc/hosts*
+* this will print the contents from this etc/hosts file. It executes a command on the container.
+
+and finally
+
+*docker run -d whatever*
+* this will run the container on the background, in detached mode, which will leave the prompt still useful.
+
+if you want to attach back the container, on a later date, just run:
+
+*docker attach "id of the container"
+
